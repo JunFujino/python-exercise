@@ -8,8 +8,8 @@ B = 0.10
 E = 1.0
 dt = 0.10
 nstep = 1000
-itr = 10
-dw = 0.20
+itr = 20
+dw = 0.10
 for i in range(0,itr+1):
     #===========初期条件===========
     w = dw * float(i)
@@ -22,18 +22,20 @@ for i in range(0,itr+1):
         v = v - k * x * dt / m -  B * v * dt / m + E * dt * np.sin(w*t) / m
         x = x + v * dt
         t = t + dt
-        if x>5:
+        if x>7.5:
             flg=1
     if flg==1:
         w = dw * float(i)
         t = 0.0
         v = 0.0
         x = 1.0
-        plt.scatter(t,x,s=5,c="b")
+        plt.scatter(t,x,s=5,c="b",label="ω =%1.1f" % float(i*dw))
         for n in range(1,nstep+1):
             v = v - k * x * dt / m -  B * v * dt / m + E * dt * np.sin(w*t) / m
             x = x + v * dt
             t = t + dt
             plt.scatter(t,x,s=5,c="b")
-        print(float(i)*dw)
+        #print(float(i)*dw)
+        plt.legend()
         plt.show()
+        
