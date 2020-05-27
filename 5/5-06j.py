@@ -21,6 +21,6 @@ for i in range(0,itr+1):
         if x<0:
             print("振動する B =",B)
             break
-        elif n==400:
-            print("振動しない B =",B)
+    if n==400:
+        print("振動しない B =",B)
             
