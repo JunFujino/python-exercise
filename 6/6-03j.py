@@ -1,19 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
 #==================パラメータ======================
-l = 1.0
+m = 1.0
+M = 1.0
+G = 1.0
 g = 9.80
-dt = 0.10
-itr = 100
+dt = 0.010
+itr = 400
 #==================初期条件======================
-theta = 0
-dtheta = 0.10
+x = 1.0
+y = 0.0
+vx = 0.0
+vy = 0.50
 t = 0.0
-plt.scatter(t,theta,s=5,c="blue")
+plt.scatter(x,y,s=5,c="blue")
 #==================シンプレクティック法======================
 for n in range(0,itr+1):
     t = float(n) * dt
-    dtheta = dtheta - dt * g * np.sin(theta) / l
-    theta = theta + dt * dtheta
-    plt.scatter(t,theta,s=5,c="blue")
+    vy = vy - g * dt
+    x = x + vx * dt
+    y = y + vy * dt
+    plt.scatter(x,y,s=5,c="blue")
 plt.show()
