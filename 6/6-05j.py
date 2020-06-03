@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-color = ["r", "g", "b", "c", "m", "y", "k", "w"]
+color = ["r", "g", "b", "c", "m", "y", "k", "darkblue"]
 #==================パラメータ======================
 m = 1.0
 M = 1.0
@@ -8,7 +8,8 @@ G = 1.0
 g = 9.80
 dt = 0.010
 step = 400
-itr = 5
+itr = 8
+plt.scatter(0,0,s=20,c="red")       #恒星の位置
 for i in range(0,itr):
     #==================初期条件======================
     x = 1.0
