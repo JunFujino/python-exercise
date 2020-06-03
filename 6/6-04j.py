@@ -26,6 +26,7 @@ for i in range(0,itr):
         #plt.scatter(t,theta,s=5,c=color[i])
         plt.scatter(x,y,s=5,c=color[i])
 plt.show()
-
+#dtheta<1くらいの時は，振幅が変わるだけで周期は変わらない！（高校物理！）　
+#dthetaが大きくなってくると，周期も変わっていく
 #大体，dtheta>6くらいで発散が見れる
 #dtheta==7でx,yをプロットしてみる
