@@ -2,11 +2,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 #=================パラメータ======================
-#mu = 0.9
+mu = 0.9
 #mu = 1.5
 #mu = 2.9
 #mu = 3.4
-mu = 4.0
+#mu = 4.0
 N = 100
 #=================初期条件========================
 x = np.zeros(N+1)
@@ -15,6 +15,7 @@ x[0] = 0.1
 for i in range(0,N):
     x[i+1] = mu * x[i] * ( 1 - x[i] )
 #=================図を表示する====================
-plt.plot(x,'-o')
+plt.plot(x,'-o',label="\u03bc=%1.1f" % mu)
 #plt.plot(x[70:100],'-o')
+plt.legend()
 plt.show()
