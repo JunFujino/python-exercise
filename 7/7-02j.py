@@ -2,7 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 #=================パラメータ======================
-mu = 0.9
+mu = 0.9    # x=0 に収束していく
 #mu = 1.5
 #mu = 2.9
 #mu = 3.4
