@@ -1,6 +1,6 @@
-import matplotlib.pyplot  as plt
+import matplotlib.pyplot as plt
 mu0 = 1.50
-K = 101
+K = 100
 dmu = 0.0250
 N=50  
 m=20    #各muに対してうつ点の数
