@@ -1,10 +1,10 @@
 import matplotlib.pyplot  as plt
 mu0 = 1.50
+K = 101
 dmu = 0.0250
 N=50
 m=20
-print('mu =',mu)
-for i in range(K+1):
+for i in range(0,K):
     mu = mu0 + i * dmu
     print('mu =',mu)
     x = 0.10
