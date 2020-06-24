@@ -10,7 +10,7 @@ def logistic(mu):
         x[i+1] = mu * x[i] * (1.0 - x[i])
     return x[N:N+m]
 #=============ループ===============================================
-for mu in np.linspace(2.4, 4.0, 501):
+for mu in np.linspace(2.8, 4.0, 501):
     x_data = logistic(mu)
     mu_data = np.array([mu]*len(x_data))
     plt.plot(mu_data, x_data, ".", markersize = 1.2,c='blue')
