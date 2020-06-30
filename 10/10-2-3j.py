@@ -35,21 +35,30 @@ th1 = 120.0
 w1 = 0.0
 th2 = -10.0 #- 0.010 (case1)
 w2 = 0.0
+dth = 0.010
 # initial conditions
 j = 0  
 M = 100
 x = np.radians([th1, w1, th2, w2])
 xh = np.zeros ((int(N/M),4))
+y = np.radians ([th1,w1,th2+dth,w2])
+yh = np.zeros ((int(N/M),4))
 for i in range(N):
     x = x + derivs(x)*dt
+    y = y + derivs(y)*dt
     if i % M == 0:      #Mステップおきに出力
         xh[j,:]=x[:]
+        yh[j,:]=y[:]
         j = j + 1
 #==========================================以下アニメーション用==================================================
 x1 = L1*sin(xh[:, 0])
 y1 = -L1*cos(xh[:, 0])
 x2 = L2*sin(xh[:, 2]) + x1
 y2 = -L2*cos(xh[:, 2]) + y1
+x3 = L1*sin(yh[:, 0])
+y3 = -L1*cos(yh[:, 0])
+x4 = L2*sin(yh[:, 2]) + x3
+y4 = -L2*cos(yh[:, 2]) + y3
 fig = plt.figure ()
 ax = fig.add_subplot (111,  autoscale_on=False , xlim=(-2, 2), ylim=(-2, 2))
 ax.set_aspect('equal')
@@ -61,12 +70,19 @@ def init ():
     line.set_data ([], [])
     time_text.set_text('')
     return line , time_text
-def animate(i):
+def animate1(i):
     thisx = [0, x1[i], x2[i]]
     thisy = [0, y1[i], y2[i]]
     line.set_data(thisx , thisy)
     time_text.set_text(time_template % (i*dt*M))
     return line , time_text
-ani = animation.FuncAnimation(fig , animate ,int(N/M),interval=dt*N, blit=True , init_func=init)
-ani.save('double_pendulum.gif',writer='pillow',fps=50)
+def animate2(i):
+    thisx = [0, x3[i], x4[i]]
+    thisy = [0, y3[i], y4[i]]
+    line.set_data(thisx , thisy)
+    time_text.set_text(time_template % (i*dt*M))
+    return line , time_text
+ani = animation.FuncAnimation(fig , animate1 ,int(N/M),interval=dt*N, blit=True , init_func=init)
+ani = animation.FuncAnimation(fig , animate2 ,int(N/M),interval=dt*N, blit=True , init_func=init)
+#ani.save('double_pendulum.gif',writer='pillow',fps=50)
 plt.show()
