@@ -28,12 +28,11 @@ def derivs(x):
 
 dt = 0.0001
 N=100000
-
 # th1 and th2 are the initial angles (degrees)
 # w10 and w20 are the initial angular velocities (degrees per second)
 th1 = 120.0
 w1 = 0.0
-th2 = -10.0 - 0.010 (case1)
+th2 = -10.0 #- 0.010 (case1)
 w2 = 0.0
 # initial conditions
 x = np.radians([th1, w1, th2, w2])
