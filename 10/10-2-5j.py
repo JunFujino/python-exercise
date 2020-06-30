@@ -37,7 +37,7 @@ w2 = 0.0
 dth = 0.010     # error
 # initial conditions
 x = np.radians([th1, w1, th2, w2])
-y = np.radians ([th1 ,w1,th2+dth ,w2])
+y = np.radians ([th1,w1,th2+dth,w2])
 xh = np.zeros((N,4))
 yh = np.zeros((N,4))
 for i in range(N):
