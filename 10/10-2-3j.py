@@ -36,20 +36,10 @@ w1 = 0.0
 th2 = -10.0 #- 0.010 (case1)
 w2 = 0.0
 # initial conditions
-x = np.radians([th1, w1, th2, w2])
-xh=np.zeros((N,4))
-for i in range(N):
-    x = x + derivs(x)*dt
-    xh[i,:]=x[:]
-t = np.arange(0, int(dt*N), dt)
-#plt.plot(t,xh[:,0],c="red")
-#plt.plot(t,xh[:,2],c="blue")
-#plt.xlabel('t')
-#plt.show()
 j = 0  
 M = 100
+x = np.radians([th1, w1, th2, w2])
 xh = np.zeros ((int(N/M),4))
-
 for i in range(N):
     x = x + derivs(x)*dt
     if i % M == 0:      #Mステップおきに出力
