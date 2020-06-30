@@ -43,6 +43,8 @@ yh = np.zeros((N,4))
 for i in range(N):
     x = x + derivs(x)*dt
     xh[i,:]=x[:]
+    y = y + derivs(y)*dt
+    yh[i,:]=y[:]
 t = np.arange(0, int(dt*N), dt)
 #plt.plot(t,xh[:,0],c="red")
 #plt.plot(t,xh[:,2],c="blue")
