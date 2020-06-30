@@ -1,5 +1,5 @@
-import matplotlib.animation as animation
 from numpy import sin, cos
+import matplotlib.animation as animation
 import numpy as np
 import matplotlib.pyplot as plt
 G = 9.8   # acceleration due to gravity, in m/s^2
@@ -63,26 +63,24 @@ fig = plt.figure ()
 ax = fig.add_subplot (111,  autoscale_on=False , xlim=(-2, 2), ylim=(-2, 2))
 ax.set_aspect('equal')
 ax.grid()
-line , = ax.plot([], [],'o-', lw = 2)
+line1 , = ax.plot([], [],'o-', lw = 2)
+line2 , = ax.plot([], [],'o-', lw = 2)
 time_template ='time = %.1fs'
 time_text = ax.text (0.05, 0.9,'', transform=ax.transAxes)
 def init ():
-    line.set_data ([], [])
+    line1.set_data ([], [])
+    line2.set_data ([], [])
     time_text.set_text('')
-    return line , time_text
-def animate1(i):
-    thisx = [0, x1[i], x2[i]]
-    thisy = [0, y1[i], y2[i]]
-    line.set_data(thisx , thisy)
+    return line1, line2 , time_text
+def animate(i):
+    thisx1 = [0, x1[i], x2[i]]
+    thisy1 = [0, y1[i], y2[i]]
+    thisx2 = [0, x3[i], x4[i]]
+    thisy2 = [0, y3[i], y4[i]]
+    line1.set_data(thisx1 , thisy1)
+    line2.set_data(thisx2 , thisy2)
     time_text.set_text(time_template % (i*dt*M))
-    return line , time_text
-def animate2(i):
-    thisx = [0, x3[i], x4[i]]
-    thisy = [0, y3[i], y4[i]]
-    line.set_data(thisx , thisy)
-    time_text.set_text(time_template % (i*dt*M))
-    return line , time_text
-ani = animation.FuncAnimation(fig , animate1 ,int(N/M),interval=dt*N, blit=True , init_func=init)
-ani = animation.FuncAnimation(fig , animate2 ,int(N/M),interval=dt*N, blit=True , init_func=init)
-#ani.save('double_pendulum.gif',writer='pillow',fps=50)
+    return line1, line2, time_text
+ani = animation.FuncAnimation(fig , animate ,int(N/M),interval=dt*N, blit=True , init_func=init)
+ani.save('double_pendulum_comparison.gif',writer='pillow',fps=50)
 plt.show()
