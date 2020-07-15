@@ -34,10 +34,11 @@ th1 = 120.0
 w1 = 0.0
 th2 = -10.0 #- 0.010 (case1)
 w2 = 0.0
-dth = 0.010     # error
+dth1 = 0.0001  
+dth2 = 0.010     # error
 # initial conditions
 x = np.radians([th1, w1, th2, w2])
-y = np.radians ([th1,w1,th2+dth,w2])
+y = np.radians ([th1+dth1,w1,th2+dth2,w2])
 xh = np.zeros((N,4))
 yh = np.zeros((N,4))
 for i in range(N):
@@ -46,12 +47,12 @@ for i in range(N):
     y = y + derivs(y)*dt
     yh[i,:]=y[:]
 t = np.arange(0, int(dt*N), dt)
-plt.plot(t,xh[:,0],c="red")
-plt.plot(t,xh[:,2],c="blue")
-plt.plot(t,yh[:,0],c="yellow")
-plt.plot(t,yh[:,2],c="green")
-#plt.plot(t,np.log( np.abs(xh[:,0]-yh[:,0]) ),c="red")
-#plt.plot(t,np.log( np.abs(xh[:,2]-yh[:,2]) ),c="blue")
+#plt.plot(t,xh[:,0],c="red")
+#plt.plot(t,xh[:,2],c="blue")
+#plt.plot(t,yh[:,0],c="yellow")
+#plt.plot(t,yh[:,2],c="green")
+plt.plot(t,np.log( np.abs(xh[:,0]-yh[:,0]) ),c="red")
+plt.plot(t,np.log( np.abs(xh[:,2]-yh[:,2]) ),c="blue")
 plt.xlabel('t')
 plt.grid(b=None, which='major', axis='both')
 plt.show()
