@@ -46,12 +46,12 @@ for i in range(N):
     y = y + derivs(y)*dt
     yh[i,:]=y[:]
 t = np.arange(0, int(dt*N), dt)
-#plt.plot(t,xh[:,0],c="red")
-#plt.plot(t,xh[:,2],c="blue")
-#plt.plot(t,yh[:,0],c="yellow")
-#plt.plot(t,yh[:,2],c="green")
-plt.plot(t,np.log( np.abs(xh[:,0]-yh[:,0]) ),c="red")
-plt.plot(t,np.log( np.abs(xh[:,2]-yh[:,2]) ),c="blue")
+plt.plot(t,xh[:,0],c="red")
+plt.plot(t,xh[:,2],c="blue")
+plt.plot(t,yh[:,0],c="yellow")
+plt.plot(t,yh[:,2],c="green")
+#plt.plot(t,np.log( np.abs(xh[:,0]-yh[:,0]) ),c="red")
+#plt.plot(t,np.log( np.abs(xh[:,2]-yh[:,2]) ),c="blue")
 plt.xlabel('t')
 plt.grid(b=None, which='major', axis='both')
 plt.show()
