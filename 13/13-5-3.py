@@ -17,9 +17,11 @@ y = np.empty(N+1)
 #初期条件
 for i in range(N+1):
     v[i] = 0.0
-    y[i] = np.random.rand()
+    y[i] = np.cos(2*np.pi*i/N)
 #時間発展（シンプレクティック法）
 for nt in range(Nt+1):
+    y[0] = y[1]
+    y[N] = y[N-1]
     for i in range(1,N):
         v[i] = v[i] + k * (y[i-1] - 2*y[i] + y[i+1]) * dt / m
     for i in range(1,N):
