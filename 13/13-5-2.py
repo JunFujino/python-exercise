@@ -17,7 +17,7 @@ y = np.empty(N+1)
 #初期条件
 for i in range(N+1):
     v[i] = 0.0
-    y[i] = np.random
+    y[i] = np.random.rand()
 #時間発展（シンプレクティック法）
 for nt in range(Nt+1):
     for i in range(1,N):
