@@ -7,11 +7,11 @@ fig = plt.figure() #アニメーションを出力するウィンドウを生成
 ims = [] #画像のリストを作成
 
 N = 100
-dt = 0.1
+dt = 0.10
 m = 1.0
 k = 1.0
 
-Nt = 1000
+Nt = 4000
 v = np.empty(N+1)
 y = np.empty(N+1)
 #初期条件
@@ -20,7 +20,7 @@ for i in range(N+1):
     y[i] = 0.0
 #時間発展（シンプレクティック法）
 for nt in range(Nt+1):
-    t = nt * dt
+    t = float(nt) * dt
     y[0] = np.cos(2*np.pi*t/100)
     y[N] = 0.0
     for i in range(1,N):
