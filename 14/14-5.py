@@ -7,7 +7,7 @@ ims = []                            #アニメーション用
 #   パラメータ
 #====================================
 N = 20
-Nt = 2000
+Nt = 1000
 L = 30
 V = 1.0
 A = 1.0
@@ -39,17 +39,17 @@ for n in range(Nt+1):
             dx = dx + L 
         V = np.tanh(dx-C) + np.tanh(C)
         v[i] =  v[i] + A * (V - v[i]) * dt
-        t[i] = n*dt    
     for i in range(N):
         x[i] = x[i] + v[i] * dt
         if(x[i]>=L):
             x[i] = x[i] - L
-
-    for i in range(N):
-        theta = 2*np.pi*x[i]/L
-        X[i] = np.cos(theta)
-        Y[i] = np.sin(theta)
+    #t = n * dt
+    #for i in range(N):
+        #theta = 2*np.pi*x[i]/L
+        #X[i] = np.cos(theta)
+        #Y[i] = np.sin(theta)
+        #plt.scatter(t,x[i],c='blue',s=3)
     xi[n] = x[0]
     t[n] = n * dt
-plt.plot(t,xi,'ob')     #アニメーション用
+plt.plot(t,xi,'b-') 
 plt.show()
