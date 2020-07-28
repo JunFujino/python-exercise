@@ -21,14 +21,14 @@ for n in range(Nt+1):
     v = v + A * (V - v) * dt
     x = x + v * dt
 
-if(x>=L):
-    x = x - L
-    theta = 2*np.pi*x/L
-    X = np.cos(theta)
-    Y = np.sin(theta)
-    
-    im = plt.plot(X,Y,'ob')     #アニメーション用
-    ims.append(im)              #アニメーション用
+    if(x>=L):
+        x = x - L
+        theta = 2*np.pi*x/L
+        X = np.cos(theta)
+        Y = np.sin(theta)
+        
+        im = plt.plot(X,Y,'ob')     #アニメーション用
+        ims.append(im)              #アニメーション用
 
 ani = animation.ArtistAnimation(fig, ims, interval = 10)        #アニメーション用
 plt.show()
