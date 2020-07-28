@@ -21,10 +21,13 @@ X = np.empty(N)
 Y = np.empty(N)
 
 r = np.random.rand(N)
+for i in range(N):
+    x[i] = (i+r[i])*L/N
+    v[i] = 0
 for n in range(Nt+1):
-    v = v + A * (V - v) * dt
-    x = x + v * dt
-
+    for i in range(N):
+        v[i] =  v[i] + A * (V - v[i]) * dt
+    for i in range(N):
     if(x>=L):
         x = x - L
     theta = 2*np.pi*x/L
