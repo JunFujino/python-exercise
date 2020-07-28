@@ -35,7 +35,7 @@ for n in range(Nt+1):
             dx = x[0] - x[N-1]
         if(dx<0):
             dx = dx + L 
-        V = B * dx * 0.50
+        V = np.tanh(dx-C) + np.tanh(C)
         v[i] =  v[i] + A * (V - v[i]) * dt
     for i in range(N):
         x[i] = x[i] + v[i] * dt
