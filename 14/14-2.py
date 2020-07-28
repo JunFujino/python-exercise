@@ -21,6 +21,7 @@ X = np.empty(N)
 Y = np.empty(N)
 
 r = np.random.rand(N)
+
 for i in range(N):
     x[i] = (i+r[i])*L/N
     v[i] = 0
@@ -28,12 +29,14 @@ for n in range(Nt+1):
     for i in range(N):
         v[i] =  v[i] + A * (V - v[i]) * dt
     for i in range(N):
-    if(x>=L):
-        x = x - L
-    theta = 2*np.pi*x/L
-    X = np.cos(theta)
-    Y = np.sin(theta)
-    
+        x[i] = x[i] + v[i] * dt
+        if(x[i]>=L):
+            x[i] = x[i] - L
+    for i in range(N):
+        theta = 2*np.pi*x[i]/L
+        X[i] = np.cos(theta)
+        Y[i] = np.sin(theta)
+        
     im = plt.plot(X,Y,'ob')     #アニメーション用
     ims.append(im)              #アニメーション用
 
