@@ -27,11 +27,18 @@ for i in range(N):
     v[i] = 0
 for n in range(Nt+1):
     for i in range(N):
+        if(i<N-1):
+            dx = x[i+1] - x[i]
+        else:
+            dx = x[0] - x[N-1]
+        if(dx<0):
+            dx = dx + L 
         v[i] =  v[i] + A * (V - v[i]) * dt
     for i in range(N):
         x[i] = x[i] + v[i] * dt
         if(x[i]>=L):
             x[i] = x[i] - L
+
     for i in range(N):
         theta = 2*np.pi*x[i]/L
         X[i] = np.cos(theta)
