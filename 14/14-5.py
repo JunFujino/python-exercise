@@ -51,5 +51,5 @@ for n in range(Nt+1):
         Y[i] = np.sin(theta)
     xi[n] = x[0]
     t[n] = n * dt
-plt.plot(t,x,'ob')     #アニメーション用
+plt.plot(t,xi,'ob')     #アニメーション用
 plt.show()
