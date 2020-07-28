@@ -17,6 +17,8 @@ C = 2.0
 #   パラメータと初期条件
 #====================================
 dt = 0.1
+t = np.empty(Nt+1)
+xi = np.empty(Nt+1)
 x = np.empty(N)
 v = np.empty(N)
 X = np.empty(N)
@@ -37,6 +39,7 @@ for n in range(Nt+1):
             dx = dx + L 
         V = np.tanh(dx-C) + np.tanh(C)
         v[i] =  v[i] + A * (V - v[i]) * dt
+        t[i] = n*dt    
     for i in range(N):
         x[i] = x[i] + v[i] * dt
         if(x[i]>=L):
@@ -46,9 +49,7 @@ for n in range(Nt+1):
         theta = 2*np.pi*x[i]/L
         X[i] = np.cos(theta)
         Y[i] = np.sin(theta)
-        
-    im = plt.plot(n*dt,x,'ob')     #アニメーション用
-    ims.append(im)              #アニメーション用
-
-ani = animation.ArtistAnimation(fig, ims, interval = 10)        #アニメーション用
+    xi[n] = x[0]
+    t[n] = n * dt
+plt.plot(t,x,'ob')     #アニメーション用
 plt.show()
