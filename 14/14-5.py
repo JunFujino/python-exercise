@@ -15,7 +15,7 @@ C = 2.0
 #====================================
 dt = 0.1
 t = np.empty(Nt+1)
-xi = np.empty(Nt+1,N)
+xi = np.empty((Nt+1,N))
 x = np.empty(N)
 v = np.empty(N)
 X = np.empty(N)
@@ -47,5 +47,5 @@ for i in range(N):
     xii = np.empty(Nt+1)
     for n in range(Nt+1):
         xii[n] = xi[n,i] 
-    plt.plot(t,xii,'-') 
+    plt.plot(t,xii,'o') 
 plt.show()
