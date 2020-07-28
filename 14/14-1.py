@@ -23,12 +23,12 @@ for n in range(Nt+1):
 
     if(x>=L):
         x = x - L
-        theta = 2*np.pi*x/L
-        X = np.cos(theta)
-        Y = np.sin(theta)
-        
-        im = plt.plot(X,Y,'ob')     #アニメーション用
-        ims.append(im)              #アニメーション用
+    theta = 2*np.pi*x/L
+    X = np.cos(theta)
+    Y = np.sin(theta)
+    
+    im = plt.plot(X,Y,'ob')     #アニメーション用
+    ims.append(im)              #アニメーション用
 
 ani = animation.ArtistAnimation(fig, ims, interval = 10)        #アニメーション用
 plt.show()
