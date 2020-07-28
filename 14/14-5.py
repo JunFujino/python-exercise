@@ -15,7 +15,7 @@ C = 2.0
 #====================================
 dt = 0.1
 t = np.empty(Nt+1)
-xi = np.empty(Nt+1)
+xi = np.empty(Nt+1,N)
 x = np.empty(N)
 v = np.empty(N)
 X = np.empty(N)
@@ -40,7 +40,12 @@ for n in range(Nt+1):
         x[i] = x[i] + v[i] * dt
         if(x[i]>=L):
             x[i] = x[i] - L
-    xi[n] = x[0]
+    for i in range(N):
+        xi[n,i] = x[i]
     t[n] = n * dt
-plt.plot(t,xi,'b-') 
+for i in range(N):
+    xii = np.empty(Nt+1)
+    for n in range(Nt+1):
+        xii[n] = xi[n,i] 
+    plt.plot(t,xii,'-') 
 plt.show()
