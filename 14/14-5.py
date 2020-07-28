@@ -1,8 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-fig = plt.figure(figsize=(5,5))     #アニメーション用
-ims = []                            #アニメーション用
 #====================================
 #   パラメータ
 #====================================
@@ -43,12 +40,6 @@ for n in range(Nt+1):
         x[i] = x[i] + v[i] * dt
         if(x[i]>=L):
             x[i] = x[i] - L
-    #t = n * dt
-    #for i in range(N):
-        #theta = 2*np.pi*x[i]/L
-        #X[i] = np.cos(theta)
-        #Y[i] = np.sin(theta)
-        #plt.scatter(t,x[i],c='blue',s=3)
     xi[n] = x[0]
     t[n] = n * dt
 plt.plot(t,xi,'b-') 
