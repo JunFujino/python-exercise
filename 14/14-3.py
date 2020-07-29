@@ -20,9 +20,7 @@ x = np.empty(N)
 v = np.empty(N)
 X = np.empty(N)
 Y = np.empty(N)
-
 r = np.random.rand(N)
-
 for i in range(N):
     x[i] = (i+r[i])*L/N
     v[i] = 0
